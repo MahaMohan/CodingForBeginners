@@ -279,3 +279,49 @@ while i <= 5:
     break #Used to terminate the loop
 print("Done")
 
+
+
+#FOR LOOP
+for item in 'Python':
+    print(item) #Each character of string is printed on newline
+
+# In python [] defines list
+for item in ['mosh','john','sarah']:
+    print(item)
+
+for item in range(10):
+    print(item)
+#instead of typing out [1,2,3,4,5,6] we can do range(10) using the range function
+#range creates a special object that it can iterate over
+for item in range(5, 10):
+    print(item)
+#We get numbers starting with 5 and end with 9
+for item in range(5, 10, 2):
+    print(item)
+#We get 5,7,9 as it increments by 2
+
+#NESTED LOOPS
+#Adding 1 loop inside another loop
+for x in range(4):
+    for y in range(3):
+        print(f'({x} , {y})')
+#OUTPUT: (0,0),(0,1),(0,2),(1,0),(1,1),(1,2),ETC.....
+       
+
+
+#LISTS
+names = ['John', 'Bob', 'Mosh', 'Sarah', 'mary']
+print(names[0]) #OUTPUT: John
+print(names[2]) #OUTPUT: Mosh
+print(names[-1]) #OUTPPUT: Mary
+print(names[2:]) #OUTPUT is from Mosh to end of the list
+print(names[2:4]) #OUTPUT: Mosh, Sarah
+print(names[:]) #Gets all the items in the list
+
+names = ['John', 'Bob', 'Mosh', 'Sarah', 'mary']
+names[0] = 'Jon'  #REplaces John with Jon
+print(names) 
+
+
+#2D LISTS
+#Based on mathematicsl concept of matrix
