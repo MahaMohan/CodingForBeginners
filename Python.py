@@ -107,7 +107,7 @@ another = course[:]
 first = 'John'
 last = 'smith'
 #Want to generate a text John [Smith] is a coder
-message = first + ' [' + last + '} is a coder'
+message = first + ' [' + last + '] is a coder'
 print(message)
 #BUT IT IS NOT IDEAL SO WE USE FORMATED STRING
 
@@ -152,7 +152,6 @@ print(10 ** 3) #Exponent/Power Operator
 x = 10
 x = x + 3
 print(x) #Output is 13 since it gets incremented
-
 x = 10
 x += 3 #Argumented Assignment Operator
 print(x) 
@@ -168,7 +167,8 @@ x = 2.9
 print(round(x)) #Built in function to round up numbers we get 3
 print(abs(-2.9)) #Absolute always return a positive number we get 2.9
 
-import math #Module to access all maths functions
+import math
+from struct import calcsize #Module to access all maths functions
 math.acos()
 math.sin()
 math.ceil(2.9) #We get 3
@@ -185,7 +185,6 @@ if is_hot:  #If it is False only 'Enjoy your day' will be shown
     print("Drink plenty of water")
 print("Enjoy your day")
 
-
 is_hot = False
 if is_hot: #Only gets displayed if is_hot is True
     print("It's a hot day")
@@ -194,7 +193,6 @@ else:    #Only gets displayed if is_hot is False
     print("It's a cold day")
     print("Wear warm clothes")
 print("Enjoy your day")
-
 
 is_hot = False
 is_cold = True
@@ -325,3 +323,211 @@ print(names)
 
 #2D LISTS
 #Based on mathematicsl concept of matrix
+matrix = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9]
+]
+print(matrix[0][1]) #Output: 2
+#Changing matrix value
+matrix[0][1] = 20
+print(matrix[0][1]) #Output: 20
+#Using a loop to get all the values in a matrix
+for row in matrix:
+    for item in row:
+        print(item)
+#Output: 1 2 3 4 5 6 7 8 9
+
+
+#LIST METHODS/FUNCTIONS
+#operations to perform on a list
+numbers = [5,2,1,7,4]
+numbers.append(20)
+print(numbers) #Output: [5,2,1,7,4,20]
+
+numbers.insert(0,10) #Insert in a specific position
+print(numbers) #Output: [10,5,2,1,7,4]
+
+numbers.remove(5)
+print(numbers) #Output: [2,1,7,4]
+
+numbers.clear()
+print(numbers) #Output: []
+
+numbers.pop() #Removes the last number on the list
+numbers.index(5) #Gets us the location of number here is 0
+
+print(50 in numbers) #Output will be in a boolean value True or False if objest exists
+
+numbers = [5,2,1,5,7,4]
+print(numbers.count(5)) #print how many times 5 is repeated. Here is 2
+
+numbers.sort() #Sort in asending order
+numbers.reverse() #sort in desending order
+numers2 = numbers.copy() #Creates a copy of the list in a new variable
+
+
+#TUPLES
+#Similar to lists but cannot be modified and is immune to changes
+numbers = (1,2,3,4) #Use normal bracket to create a tuple
+#Only can get info on tuple and values cannot changed
+print(numbers[0]) #Gets number on index 0 here it is 1
+#Best to be used in program to prevent accidental changes
+
+
+#UNPACKING
+coordinates = (1,2,3)
+x = coordinates[0] 
+y = coordinates[1]
+z = coordinates[2]
+answer = x*y*z
+#Can follow the below method to get same answer with far less code
+
+x, y, z = coordinates
+#Python assigns the values to the variables acoordingly 
+#Can be used in lists as well
+
+
+#DICTIONARIES
+#store info as key value pair
+customer = {
+    "name": "John Smith",
+    "age": 30,
+    "is_verified": True
+}
+print(customer["name"]) #Output: John Smith
+print(customer.get("birthdate")) #Doesnt yell at us if wrong request
+print(customer.get("birthdate", "Jan 1 1980")) #Added default value in case not in dictionary
+
+customer["name"] = "Jack Smith" #Edited name of the dictionary
+customer["birthdate"] = "Jan 1 1980"
+print(customer["name"]) #Ability to add new or update key values in dictionaries
+
+
+#FUNCTIONS
+#As our project grows we need a better way to organise our code by breaking up into smaller reusable chunks
+#It is a container with a few lines of code that performs a specific task
+#print() ,input() are inbuilt functions that have a purpose 
+
+def greet_user(): #colon is to tell python we are defining a block of code
+    print('Hi there')
+    print('welcome aboard') #We will need them in other programs
+#Whenever greet_user funtion is called these 2 lines will appear
+
+print("start")
+greet_user()
+print("finish")
+#On running program we get 4 messages on the terminal Both print and function statements
+#Order of code matters as calling function bafore it is defined gives an error
+
+
+#PARAMETERS
+#Passing infomation to your functions
+
+def greet_user(name): #Function gets value from main code
+    print(f'Hi {name}!') #Value is formatted and then sent to main code
+    print('welcome aboard')
+
+print("start")
+greet_user("John") #Passing a value to the funcion
+greet_user("Mary") #Reusing same function by passing it a different value
+#If didn't have function we would need to rewrite entire code twice for John and Mary
+print("finish")
+#Running program replaces the line hi there with hi john and then hi mary
+
+#If function has parameter we are obligated to pass a value for that parameter if not error will occur
+#Argument in programming is the value that we supply to a function
+#John, Mary are argument that we pass to the name parameter
+#Parameters are holes or placeholders we define in our funtion for recieving info
+#Arguments are the actual pieces of infomation that we supply to these functions
+
+def greet_user(first_name, last_name):  # Function gets value from main code
+    print(f'Hi {first_name} {last_name}!')  # Value is formatted and then sent to main code
+    print('welcome aboard')
+
+print("start")
+greet_user("John", "Smith")  # Passing values to the funcion
+print("finish")
+#Passing 2 arguments to the parameters of the function
+
+
+#KEYWORD ARGUMENTS
+#Position of passing the arguments doesn't matter here
+#Combination of parameter name followed by it's value is keyword argument
+def greet_user(first_name, last_name):
+    print(f'Hi {first_name} {last_name}!')
+    print('welcome aboard')
+
+print("start")
+greet_user(last_name="Smith", first_name= "John")  #Here we have 2 keyword arguments
+#Now we dont have to worry about the order of the parameter
+print("finish")
+#It usually helps with the readability of the code sometimes than positional arguments
+#Good to use when passing numerical values as we cant guess what those values represent:
+#Example: calc_cost(total=50, shipping=5, discount=0.1) increase readability
+
+
+#RETURN STATEMENT
+#Create functions that return values
+def square(number):
+    return number*number #return value back to main code
+
+result = square(3)
+print(result) #Output: 9
+#Or can be written as:
+print(square(3)) #A Shorter code
+#If return statement is removed we will get default value Output: None
+
+
+#EXCEPTIONS
+#How to handle errors in your program as a good programmer always anticipate 
+#these kind of exceptions and handle them properly
+
+age = int(input('age:'))
+print(age)
+#If value is other than integer we get an error invalid input
+#Exit code 0 means good and 1 means it crashed
+#Print a proper error message if program crashed
+try:
+    age = int(input('age:')) #Wrong input will lead to an excption
+    print(age)
+except ValueError: #Print proper error message if user input not integer
+    print('Invalid value') #Message will be printed if there is an exception
+
+try:
+    age = int(input('age:'))  #Now user enters 0
+    income = 20000
+    risk = income/age  #No number can be divided by 0
+    print(risk)  #We will get error zerodivisionerror
+except ZeroDivisionError: #20000 cannot be divided by 0 and will be caught
+    print('age cannot be zero')
+except ValueError:   #0 is an integer and hence not caught by valueerror
+    print('Invalid value') 
+
+
+#COMMENTS
+#Comments are used to add notes or comments to our program to help with readability
+
+#This line is ignored and can serve as reminders or notes to communicate with other devs
+#Bad comment is ex. print sky is blue as it is obvious next line will print this 
+print("Sky is blue")
+#Don't use useless and repeative comment as it will create more noise in the code for others when thwy read
+#Use comments to explain hows or assumptions or can be used to remind yourself or others
+
+
+#CLASSES
+#Classes are used to define a new type to model real concepts
+#basic types: numbers, strings, boolean and complex types: lists, dictionaries
+class Point:  #Pascal naming convention used for class ex. EmailClient
+    def move(self):
+        print("move")
+
+    def draw(self):
+        print("Draw")
+#A new type has been created with this class and now we can make new objects
+#Object is an instance of an class
+point1 = Point() #Store the object in a variable
+point1.draw() #defined method is useable
+#Output: Draw
+point1.move() #defined method is useable
+#Apart from methods these objects can also have attributes
